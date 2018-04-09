@@ -46,6 +46,7 @@ import (
 	"k8s.io/ingress-nginx/internal/ingress/annotations/proxy"
 	"k8s.io/ingress-nginx/internal/ingress/annotations/ratelimit"
 	"k8s.io/ingress-nginx/internal/ingress/annotations/redirect"
+	"k8s.io/ingress-nginx/internal/ingress/annotations/regexmatch"
 	"k8s.io/ingress-nginx/internal/ingress/annotations/rewrite"
 	"k8s.io/ingress-nginx/internal/ingress/annotations/secureupstream"
 	"k8s.io/ingress-nginx/internal/ingress/annotations/serversnippet"
@@ -98,6 +99,7 @@ type Ingress struct {
 	GRPC                 bool
 	LuaRestyWAF          luarestywaf.Config
 	InfluxDB             influxdb.Config
+	RegexMatch           bool
 }
 
 // Extractor defines the annotation parsers to be used in the extraction of annotations
@@ -140,6 +142,7 @@ func NewAnnotationExtractor(cfg resolver.Resolver) Extractor {
 			"LuaRestyWAF":          luarestywaf.NewParser(cfg),
 			"InfluxDB":             influxdb.NewParser(cfg),
 			"BackendProtocol":      backendprotocol.NewParser(cfg),
+			"RegexMatch":           regexmatch.NewParser(cfg),
 		},
 	}
 }

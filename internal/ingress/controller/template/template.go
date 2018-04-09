@@ -307,6 +307,8 @@ func buildLocation(input interface{}) string {
 			baseuri = fmt.Sprintf(`\/?%s`, baseuri)
 		}
 		return fmt.Sprintf(`~* ^%s%s`, path, baseuri)
+	} else if location.RegexMatch {
+		return fmt.Sprintf("~* ^%s", path)
 	}
 
 	return path

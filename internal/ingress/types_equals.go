@@ -386,6 +386,9 @@ func (l1 *Location) Equal(l2 *Location) bool {
 	if !(&l1.LuaRestyWAF).Equal(&l2.LuaRestyWAF) {
 		return false
 	}
+	if l1.RegexMatch != l2.RegexMatch {
+		return false
+	}
 
 	if !(&l1.InfluxDB).Equal(&l2.InfluxDB) {
 		return false

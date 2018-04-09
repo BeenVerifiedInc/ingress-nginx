@@ -273,6 +273,8 @@ type Location struct {
 	// BackendProtocol indicates which protocol should be used to communicate with the service
 	// By default this is HTTP
 	BackendProtocol string `json:"backend-protocol"`
+
+	RegexMatch bool `json:"regexMatch,omitempty"`
 }
 
 // SSLPassthroughBackend describes a SSL upstream server configured
