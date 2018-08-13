@@ -248,6 +248,7 @@ http {
     {{ else }}
         default          $remote_addr;
     {{ end }}
+        "~*(?<ip>[0-9\.]+).*"     $ip;
     }
 
     # trust http_x_forwarded_proto headers correctly indicate ssl offloading
